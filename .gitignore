@@ -26,6 +26,10 @@ secrets.json
 
 # Docker
 mysql_data/
+docker/
+docker-compose.yml
+Makefile
+requirements.txt
 
 # 로그
 logs/

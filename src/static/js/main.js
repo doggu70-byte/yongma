@@ -149,6 +149,39 @@ document.addEventListener('DOMContentLoaded', function() {
         return new bootstrap.Dropdown(dropdownToggleEl);
     });
     
+    // 모바일 네비게이션 토글 기능
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    
+    if (navbarToggler && navbarCollapse) {
+        navbarToggler.addEventListener('click', function() {
+            const isCollapsed = navbarCollapse.classList.contains('show');
+            
+            if (isCollapsed) {
+                navbarCollapse.classList.remove('show');
+            } else {
+                navbarCollapse.classList.add('show');
+            }
+        });
+        
+        // 메뉴 링크 클릭 시 모바일 메뉴 닫기
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        navLinks.forEach(function(navLink) {
+            navLink.addEventListener('click', function() {
+                if (window.innerWidth < 992) { // Bootstrap lg breakpoint
+                    navbarCollapse.classList.remove('show');
+                }
+            });
+        });
+        
+        // 외부 클릭 시 모바일 메뉴 닫기
+        document.addEventListener('click', function(e) {
+            if (!navbarToggler.contains(e.target) && !navbarCollapse.contains(e.target)) {
+                navbarCollapse.classList.remove('show');
+            }
+        });
+    }
+    
     // 네비게이션 활성화 상태 관리
     const currentLocation = location.pathname;
     const menuItems = document.querySelectorAll('.navbar-nav .nav-link');

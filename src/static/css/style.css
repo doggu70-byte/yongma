@@ -533,6 +533,46 @@ body {
     transform: translateY(-2px);
 }
 
+/* 모바일 네비게이션 스타일 */
+.navbar-toggler {
+    border: none;
+    padding: 4px 8px;
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: rgba(44, 90, 160, 0.95);
+        padding: 1rem;
+        border-radius: 10px;
+        margin-top: 0.5rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        backdrop-filter: blur(10px);
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+        margin: 0.25rem 0;
+        border-radius: 5px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover {
+        background: rgba(255,255,255,0.1);
+    }
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .hero-content h1 {

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>용마기초이엔지 - 천공기 전문업체</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        /* 히어로 섹션 - 이미지 배경 */
+        .hero {
+            min-height: 100vh;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(26,32,44,0.85) 0%, 
+                    rgba(45,55,72,0.75) 100%),
+                url('../static/images/hero-bg.jpg') center/cover no-repeat;
+            /* ↑ 여기에 이미지 경로 입력하세요! */
+            
+            /* 이미지가 없을 때 대체 배경 */
+            background-color: #1a202c;
+            
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        
+        /* 이미지 업로드 가이드 박스 */
+        .image-upload-guide {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 2px dashed #3182ce;
+            max-width: 300px;
+            z-index: 1000;
+            color: #1a202c;
+        }
+        
+        .upload-instruction {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .upload-path {
+            background: #f7fafc;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #2d3748;
+            border: 1px solid #e2e8f0;
+        }
+        
+        /* 나머지 스타일은 premium.html과 동일 */
+        :root {
+            --primary: #1a202c;
+            --secondary: #2d3748;
+            --accent: #3182ce;
+            --gold: #f6ad55;
+        }
+        
+        .navbar-premium {
+            background: rgba(26,32,44,0.95) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f6ad55 !important;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            margin: 0 8px;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(246,173,85,0.1);
+            border: 1px solid rgba(246,173,85,0.3);
+            color: #f6ad55;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+        
+        .hero-title .accent {
+            color: #f6ad55;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+        
+        .btn-premium {
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            border: none;
+            margin: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary-premium {
+            background: #3182ce;
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(49,130,206,0.4);
+        }
+        
+        .btn-primary-premium:hover {
+            background: #2c5aa0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px 0 rgba(49,130,206,0.5);
+            color: white;
+        }
+        
+        .btn-outline-premium {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-outline-premium:hover {
+            background: white;
+            color: #1a202c;
+            border-color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 이미지 업로드 가이드 -->
+    <div class="image-upload-guide">
+        <h6><i class="fas fa-image me-2 text-primary"></i>배경 이미지 업로드</h6>
+        <div class="upload-instruction">
+            <strong>1단계:</strong> 천공 현장 이미지를 준비하세요<br>
+            <strong>2단계:</strong> 아래 경로에 저장하세요
+        </div>
+        <div class="upload-path">
+            static/images/hero-bg.jpg
+        </div>
+        <small class="text-muted">권장 크기: 1920x1080px 이상</small>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-premium fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-mountain me-2"></i>용마기초이엔지
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="#home">홈</a>
+                <a class="nav-link" href="#company">회사소개</a>
+                <a class="nav-link" href="#services">사업분야</a>
+                <a class="nav-link" href="#equipment">보유장비</a>
+                <a class="nav-link" href="#portfolio">시공사례</a>
+                <a class="nav-link" href="#contact">문의하기</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="fas fa-star me-2"></i>Since 1999
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="accent">25년 신뢰</span>의<br>
+                            천공 전문 기업
+                        </h1>
+                        <p class="hero-subtitle">
+                            용마기초이엔지는 각종 천공 작업과 기초공사 분야에서<br>
+                            25년간 축적된 경험과 노하우로 최고의 품질을 보장합니다.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="tel:010-2508-7072" class="btn-premium btn-primary-premium">
+                                <i class="fas fa-phone me-2"></i>견적 문의하기
+                            </a>
+                            <a href="#portfolio" class="btn-premium btn-outline-premium">
+                                <i class="fas fa-folder-open me-2"></i>시공사례 보기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content placeholder -->
+    <section style="padding: 100px 0; background: #f7fafc; text-align: center;">
+        <div class="container">
+            <h2>배경 이미지 테스트 페이지</h2>
+            <p>우측 가이드를 참고하여 배경 이미지를 업로드해보세요!</p>
+        </div>
+    </section>
+</body>
+</html>

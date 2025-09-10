@@ -1,0 +1,646 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}문의하기 - 용마기초이엔지{% endblock %}
+{% block description %}용마기초이엔지에 천공 공사 견적 문의 및 상담 신청을 해보세요. 권부장 010-2508-7072로 직접 연락 가능합니다.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">홈</a></li>
+                        <li class="breadcrumb-item active">문의하기</li>
+                    </ol>
+                </nav>
+                <h1 class="page-title">문의하기</h1>
+                <p class="page-subtitle">전문가와 직접 상담하고 맞춤형 견적을 받아보세요</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Methods -->
+<section class="contact-methods py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="section-title">빠른 상담 방법</h2>
+                <p class="section-subtitle">다양한 방법으로 전문가와 상담하실 수 있습니다</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="contact-method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h4>전화 상담</h4>
+                    <p class="contact-info">
+                        <strong>010-2508-7072</strong><br>
+                        <small>권부장 직통 (평일 8:00-18:00)</small>
+                    </p>
+                    <p class="method-description">가장 빠른 상담 방법입니다. 현장 상황에 따른 즉시 견적이 가능합니다.</p>
+                    <a href="tel:010-2508-7072" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i>지금 전화하기
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="contact-method-card">
+                    <div class="method-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h4>카카오톡 상담</h4>
+                    <p class="contact-info">
+                        <strong>@용마기초</strong><br>
+                        <small>24시간 메시지 접수</small>
+                    </p>
+                    <p class="method-description">사진과 도면을 쉽게 전송할 수 있어 정확한 견적이 가능합니다.</p>
+                    <a href="http://pf.kakao.com/_xfxfxfxf" class="btn btn-warning" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i>카톡 상담하기
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="contact-method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4>이메일 문의</h4>
+                    <p class="contact-info">
+                        <strong>info@yongma.co.kr</strong><br>
+                        <small>상세 자료 전송 가능</small>
+                    </p>
+                    <p class="method-description">도면, 사진, 상세 요구사항을 첨부하여 정확한 견적을 요청하실 수 있습니다.</p>
+                    <a href="mailto:info@yongma.co.kr" class="btn btn-outline-primary">
+                        <i class="fas fa-envelope me-2"></i>이메일 보내기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quote Form -->
+<section class="quote-form-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="form-wrapper">
+                    <div class="text-center mb-4">
+                        <h2 class="section-title">온라인 견적 문의</h2>
+                        <p class="section-subtitle">아래 정보를 작성해 주시면 24시간 내에 연락드리겠습니다</p>
+                    </div>
+                    
+                    <form class="quote-form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <!-- 기본 정보 -->
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">성명 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="company" class="form-label">회사명</label>
+                                <input type="text" class="form-control" id="company" name="company">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">연락처 <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="010-0000-0000" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">이메일</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                        </div>
+                        
+                        <!-- 프로젝트 정보 -->
+                        <div class="mb-3">
+                            <label for="location" class="form-label">현장 위치 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="location" name="location" placeholder="서울시 강남구 역삼동" required>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="service_type" class="form-label">공사 종류 <span class="text-danger">*</span></label>
+                                <select class="form-select" id="service_type" name="service_type" required>
+                                    <option value="">선택해주세요</option>
+                                    <option value="building">건축 기초공사</option>
+                                    <option value="industrial">산업시설 천공</option>
+                                    <option value="civil">토목 천공공사</option>
+                                    <option value="special">특수 천공작업</option>
+                                    <option value="other">기타</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="building_type" class="form-label">건물 종류</label>
+                                <select class="form-select" id="building_type" name="building_type">
+                                    <option value="">선택해주세요</option>
+                                    <option value="apartment">아파트</option>
+                                    <option value="house">단독주택</option>
+                                    <option value="commercial">상업건물</option>
+                                    <option value="factory">공장/창고</option>
+                                    <option value="bridge">교량</option>
+                                    <option value="other">기타</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="diameter" class="form-label">천공 직경 (mm)</label>
+                                <input type="number" class="form-control" id="diameter" name="diameter" placeholder="예: 800">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="depth" class="form-label">천공 깊이 (m)</label>
+                                <input type="number" class="form-control" id="depth" name="depth" placeholder="예: 25">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="quantity" class="form-label">천공 수량</label>
+                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="예: 50">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="start_date" class="form-label">희망 시작일</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="budget" class="form-label">예상 예산</label>
+                                <select class="form-select" id="budget" name="budget">
+                                    <option value="">선택해주세요</option>
+                                    <option value="under_50m">5천만원 이하</option>
+                                    <option value="50m_100m">5천만원 ~ 1억원</option>
+                                    <option value="100m_300m">1억원 ~ 3억원</option>
+                                    <option value="300m_500m">3억원 ~ 5억원</option>
+                                    <option value="over_500m">5억원 이상</option>
+                                    <option value="discuss">상담 후 결정</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 상세 내용 -->
+                        <div class="mb-3">
+                            <label for="description" class="form-label">상세 내용</label>
+                            <textarea class="form-control" id="description" name="description" rows="5" placeholder="프로젝트에 대한 상세한 설명, 특이사항, 요구사항 등을 작성해 주세요."></textarea>
+                        </div>
+                        
+                        <!-- 파일 업로드 -->
+                        <div class="mb-3">
+                            <label for="files" class="form-label">첨부파일</label>
+                            <input type="file" class="form-control" id="files" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.dwg">
+                            <div class="form-text">도면, 현장사진 등을 첨부해 주세요. (최대 10MB, PDF, JPG, PNG, DWG)</div>
+                        </div>
+                        
+                        <!-- 개인정보 동의 -->
+                        <div class="mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="privacy_agree" name="privacy_agree" required>
+                                <label class="form-check-label" for="privacy_agree">
+                                    개인정보 수집 및 이용에 동의합니다 <span class="text-danger">*</span>
+                                    <button type="button" class="btn btn-link btn-sm p-0" data-bs-toggle="modal" data-bs-target="#privacyModal">
+                                        (상세 내용 보기)
+                                    </button>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="marketing_agree" name="marketing_agree">
+                                <label class="form-check-label" for="marketing_agree">
+                                    마케팅 정보 수신에 동의합니다 (선택)
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <i class="fas fa-paper-plane me-2"></i>견적 문의 보내기
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Company Info & Map -->
+<section class="company-location py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="company-info-card">
+                    <h3 class="mb-4">회사 정보</h3>
+                    <div class="info-items">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="info-content">
+                                <strong>회사명</strong>
+                                <p>용마기초이엔지</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <strong>본사 주소</strong>
+                                <p>서울시 [구체적인 주소 추가 예정]<br>
+                                   우편번호: [우편번호]</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-content">
+                                <strong>연락처</strong>
+                                <p>010-2508-7072 (권부장 직통)<br>
+                                   평일 08:00 - 18:00</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <strong>이메일</strong>
+                                <p>info@yongma.co.kr</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="info-content">
+                                <strong>주차 안내</strong>
+                                <p>건물 앞 무료 주차 가능<br>
+                                   대형 차량 주차 공간 완비</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="map-container">
+                    <h3 class="mb-4">오시는 길</h3>
+                    <div class="map-wrapper">
+                        <!-- 카카오맵 API가 들어갈 자리 -->
+                        <div id="map" style="height: 400px; background: #f0f0f0; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                            <div class="text-center text-muted">
+                                <i class="fas fa-map-marked-alt fa-3x mb-3"></i>
+                                <p>카카오맵 API 연동 예정<br>상세 위치는 전화 문의 바랍니다</p>
+                                <a href="tel:010-2508-7072" class="btn btn-primary btn-sm">전화 문의</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="transport-info mt-3">
+                        <h5>대중교통 이용시</h5>
+                        <ul class="transport-list">
+                            <li><i class="fas fa-subway me-2 text-primary"></i>지하철: [역명] 역 [번] 출구에서 도보 [분]</li>
+                            <li><i class="fas fa-bus me-2 text-primary"></i>버스: [번호] 번 버스 [정류장명] 하차</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section py-5 bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="section-title">자주 묻는 질문</h2>
+                <p class="section-subtitle">고객들이 자주 묻는 질문과 답변입니다</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                천공 비용은 어떻게 산정되나요?
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                천공 비용은 직경, 깊이, 지반 조건, 현장 접근성, 공사 규모 등 다양한 요소를 고려하여 산정됩니다. 
+                                정확한 견적을 위해서는 현장 조사가 필요하며, 전화 상담 시 개략적인 비용을 안내해드릴 수 있습니다.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                공사 기간은 얼마나 걸리나요?
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                공사 기간은 천공 수량, 깊이, 지반 조건에 따라 달라집니다. 
+                                일반적으로 소규모 주택 기초는 1-3일, 아파트 단지는 1-3개월, 대형 건물은 3-6개월 정도 소요됩니다. 
+                                정확한 공기는 현장 조건을 확인한 후 안내해드립니다.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                어떤 지역까지 시공이 가능한가요?
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                서울, 경기, 인천을 중심으로 전국 시공이 가능합니다. 
+                                지방 현장의 경우 프로젝트 규모에 따라 출장비가 추가될 수 있으며, 
+                                원거리 현장도 충분한 공사 물량이 있으면 적극적으로 참여하고 있습니다.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                긴급한 공사도 가능한가요?
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                예, 긴급 공사도 대응 가능합니다. 장비 가용성과 인력 배치에 따라 달라질 수 있으나, 
+                                최대한 고객의 일정에 맞춰 신속하게 대응하고 있습니다. 
+                                긴급 상황 시 권부장(010-2508-7072)으로 직접 연락주시면 즉시 상담해드립니다.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                                안전관리는 어떻게 하고 있나요?
+                            </button>
+                        </h2>
+                        <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                저희는 안전을 최우선으로 하는 무사고 경영을 추구합니다. 
+                                모든 작업자는 안전교육을 이수하고, 현장마다 전담 안전관리자를 배치합니다. 
+                                또한 정기적인 장비 점검과 안전장비 착용을 의무화하여 철저한 안전관리를 실시하고 있습니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Privacy Modal -->
+<div class="modal fade" id="privacyModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">개인정보 수집 및 이용 동의</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <h6>1. 개인정보 수집 목적</h6>
+                <p>견적 제공, 상담 서비스 제공, 프로젝트 관련 커뮤니케이션</p>
+                
+                <h6>2. 수집하는 개인정보 항목</h6>
+                <p>성명, 연락처, 이메일, 회사명, 프로젝트 관련 정보</p>
+                
+                <h6>3. 개인정보 보유 및 이용기간</h6>
+                <p>수집일로부터 3년간 보관하며, 목적 달성 시 지체없이 파기합니다.</p>
+                
+                <h6>4. 개인정보 제3자 제공</h6>
+                <p>고객의 동의 없이 제3자에게 제공하지 않습니다.</p>
+                
+                <h6>5. 동의 거부권</h6>
+                <p>개인정보 수집에 동의하지 않을 권리가 있으나, 동의 거부 시 서비스 이용에 제한이 있을 수 있습니다.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.contact-method-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-200);
+}
+
+.contact-method-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(44, 90, 160, 0.2);
+}
+
+.method-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.contact-info {
+    margin: 1.5rem 0;
+}
+
+.contact-info strong {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.method-description {
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.form-wrapper {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.quote-form .form-label {
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.quote-form .form-control,
+.quote-form .form-select {
+    border: 2px solid var(--gray-300);
+    border-radius: 8px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.quote-form .form-control:focus,
+.quote-form .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(44, 90, 160, 0.25);
+}
+
+.company-info-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.info-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.info-content strong {
+    display: block;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.info-content p {
+    color: var(--gray-700);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.map-container h3 {
+    color: var(--dark-color);
+}
+
+.transport-list {
+    list-style: none;
+    padding: 0;
+}
+
+.transport-list li {
+    padding: 0.5rem 0;
+    color: var(--gray-700);
+}
+
+.accordion-item {
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.accordion-button {
+    background: white;
+    border: none;
+    padding: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.accordion-button:not(.collapsed) {
+    background: var(--primary-color);
+    color: white;
+}
+
+.accordion-body {
+    padding: 1.5rem;
+    line-height: 1.7;
+    color: var(--gray-700);
+}
+
+@media (max-width: 768px) {
+    .form-wrapper {
+        padding: 2rem 1.5rem;
+    }
+    
+    .contact-method-card {
+        margin-bottom: 2rem;
+    }
+    
+    .company-info-card {
+        margin-bottom: 2rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 전화번호 포맷팅
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 3 && value.length <= 7) {
+            value = value.replace(/(\d{3})(\d+)/, '$1-$2');
+        } else if (value.length >= 8) {
+            value = value.replace(/(\d{3})(\d{4})(\d+)/, '$1-$2-$3');
+        }
+        e.target.value = value;
+    });
+    
+    // 파일 업로드 검증
+    const fileInput = document.getElementById('files');
+    fileInput.addEventListener('change', function(e) {
+        const files = Array.from(e.target.files);
+        const maxSize = 10 * 1024 * 1024; // 10MB
+        const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg'];
+        
+        for (let file of files) {
+            if (file.size > maxSize) {
+                alert(`파일 크기가 10MB를 초과합니다: ${file.name}`);
+                e.target.value = '';
+                return;
+            }
+            
+            if (!allowedTypes.includes(file.type) && !file.name.toLowerCase().endsWith('.dwg')) {
+                alert(`지원하지 않는 파일 형식입니다: ${file.name}`);
+                e.target.value = '';
+                return;
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

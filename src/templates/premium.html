@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>용마기초이엔지 - 천공기 전문업체</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a202c;
+            --secondary: #2d3748;
+            --accent: #3182ce;
+            --gold: #f6ad55;
+            --light: #f7fafc;
+            --dark: #1a202c;
+        }
+        
+        body {
+            line-height: 1.7;
+            color: #2d3748;
+        }
+        
+        /* 네비게이션 */
+        .navbar-premium {
+            background: rgba(26,32,44,0.95) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f6ad55 !important;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            margin: 0 8px;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* 히어로 섹션 */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, 
+                rgba(26,32,44,0.95) 0%, 
+                rgba(45,55,72,0.85) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="m 60 0 l 0 60 l -60 0" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1000" height="1000" fill="url(%23grid)"/></svg>');
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(246,173,85,0.1);
+            border: 1px solid rgba(246,173,85,0.3);
+            color: #f6ad55;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+        
+        .hero-title .accent {
+            color: #f6ad55;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+        
+        .btn-premium {
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            border: none;
+            margin: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary-premium {
+            background: #3182ce;
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(49,130,206,0.4);
+        }
+        
+        .btn-primary-premium:hover {
+            background: #2c5aa0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px 0 rgba(49,130,206,0.5);
+            color: white;
+        }
+        
+        .btn-outline-premium {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-outline-premium:hover {
+            background: white;
+            color: #1a202c;
+            border-color: white;
+        }
+        
+        /* 특징 섹션 */
+        .features {
+            padding: 120px 0;
+            background: #f7fafc;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #1a202c;
+            letter-spacing: -1px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #718096;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px 0 rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3182ce, #2c5aa0);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .feature-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+        
+        .feature-card p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        /* 통계 섹션 */
+        .stats {
+            padding: 100px 0;
+            background: #1a202c;
+            color: white;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #f6ad55;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+        
+        /* CTA 섹션 */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #3182ce 0%, #2c5aa0 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        /* 문의 모달 */
+        .contact-modal .modal-content {
+            border-radius: 20px;
+            border: none;
+        }
+        
+        .contact-modal .modal-header {
+            background: linear-gradient(135deg, #3182ce, #2c5aa0);
+            color: white;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .contact-info {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+        
+        .contact-info h5 {
+            color: #3182ce;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        
+        .contact-item i {
+            width: 20px;
+            text-align: center;
+            margin-right: 12px;
+            color: #3182ce;
+        }
+        
+        /* 애니메이션 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .btn-premium {
+                padding: 14px 28px;
+                font-size: 0.95rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-premium fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-mountain me-2"></i>용마기초이엔지
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#company">회사소개</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">사업분야</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#equipment">보유장비</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">시공사례</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-bs-toggle="modal" data-bs-target="#contactModal">문의하기</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="hero-badge">
+                            <i class="fas fa-star me-2"></i>Since 1999
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="accent">25년 신뢰</span>의<br>
+                            천공 전문 기업
+                        </h1>
+                        <p class="hero-subtitle">
+                            용마기초이엔지는 각종 천공 작업과 기초공사 분야에서<br>
+                            25년간 축적된 경험과 노하우로 최고의 품질을 보장합니다.
+                        </p>
+                        <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+                            <a href="#" class="btn-premium btn-primary-premium" data-bs-toggle="modal" data-bs-target="#contactModal">
+                                <i class="fas fa-calculator me-2"></i>견적 문의하기
+                            </a>
+                            <a href="#portfolio" class="btn-premium btn-outline-premium">
+                                <i class="fas fa-folder-open me-2"></i>시공사례 보기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title" data-aos="fade-up">신뢰받는 이유</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        25년간 축적된 전문성과 차별화된 서비스로 고객 만족을 실현합니다
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h4>풍부한 경험</h4>
+                        <p>1999년 창립 이래 25년간 다양한 현장에서 축적된 노하우와 기술력으로 어떤 프로젝트도 성공적으로 완료합니다.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>첨단 장비</h4>
+                        <p>최신 천공 장비와 기술을 보유하여 효율적이고 정확한 작업을 수행하며, 지속적인 장비 업그레이드로 경쟁력을 유지합니다.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-check"></i>
+                        </div>
+                        <h4>안전 최우선</h4>
+                        <p>철저한 안전관리와 체계적인 품질관리 시스템을 통해 무사고 현장을 운영하며 최고 수준의 시공 품질을 보장합니다.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>신뢰 경영</h4>
+                        <p>투명하고 정직한 거래로 고객과의 신뢰관계를 구축하며, 약속된 일정과 품질을 반드시 지키는 책임감 있는 경영을 실천합니다.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>신속 대응</h4>
+                        <p>긴급 상황이나 촉박한 일정에도 즉시 대응할 수 있는 체계를 갖추고 있어 고객의 요구에 맞는 최적의 솔루션을 제공합니다.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>합리적 견적</h4>
+                        <p>현장 조건을 정확히 분석하여 최적화된 견적을 제공하며, 불필요한 비용을 절감하여 고객에게 최대의 가치를 전달합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-item">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">년 운영 경험</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-item">
+                        <div class="stat-number">800+</div>
+                        <div class="stat-label">완료 프로젝트</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">고객 만족</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-item">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">안전 사고</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-12" data-aos="fade-up">
+                    <h2>프로젝트를 성공으로 이끌어드리겠습니다</h2>
+                    <p>25년 경험의 전문가가 현장 분석부터 완공까지 책임지고 관리합니다.</p>
+                    <a href="#" class="btn-premium btn-primary-premium me-3" data-bs-toggle="modal" data-bs-target="#contactModal">
+                        <i class="fas fa-rocket me-2"></i>프로젝트 시작하기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div class="modal fade contact-modal" id="contactModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-comments me-2"></i>견적 문의
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="contact-info">
+                                <h5><i class="fas fa-user-tie me-2"></i>담당자 직통</h5>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <strong>010-2508-7072</strong>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-user"></i>
+                                    권부장 (현장 총괄)
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-clock"></i>
+                                    평일 08:00 - 18:00
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info">
+                                <h5><i class="fas fa-envelope me-2"></i>이메일 문의</h5>
+                                <div class="contact-item">
+                                    <i class="fas fa-at"></i>
+                                    info@yongma.co.kr
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-file-alt"></i>
+                                    도면, 자료 첨부 가능
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h5 class="mb-3"><i class="fas fa-list-check me-2"></i>문의 전 체크리스트</h5>
+                            <div class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>현장 위치 및 접근성
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>공사 규모 및 수량
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>희망 공사 일정
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>지반 조건 (있는 경우)
+                            </div>
+                            <div class="mb-4">
+                                <i class="fas fa-check-circle text-success me-2"></i>예산 범위
+                            </div>
+                            
+                            <div class="text-center">
+                                <a href="tel:010-2508-7072" class="btn btn-success btn-lg">
+                                    <i class="fas fa-phone me-2"></i>지금 바로 전화하기
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 600,
+            once: true
+        });
+        
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
